@@ -5,7 +5,7 @@
 To run the application locally run:
 
 * Install dependencies `npm install`
-* Run the app npm start
+* Run the app `npm start`
 * Go to http://localhost:3000
 
 
