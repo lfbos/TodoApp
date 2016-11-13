@@ -1,31 +1,29 @@
-var $ = require('jquery');
+import $ from 'jquery';
 
-module.exports = {
-	filterTodos: function(todos, showCompleted, searchText) {
-		var filteredTodos = todos;
+export const filterTodos = (todos, showCompleted, searchText) => {
+	var filteredTodos = todos;
 
-		// Filter by showCompleted
-		filteredTodos = filteredTodos.filter((todo) => {
-			return !todo.completed || showCompleted;
-		});
+	// Filter by showCompleted
+	filteredTodos = filteredTodos.filter((todo) => {
+		return !todo.completed || showCompleted;
+	});
 
-		// Filter by searchText
-		filteredTodos = filteredTodos.filter((todo) => {
-			var text = todo.text.toLowerCase();
-			return searchText.length === 0 || text.indexOf(searchText) > -1;
-		});
+	// Filter by searchText
+	filteredTodos = filteredTodos.filter((todo) => {
+		var text = todo.text.toLowerCase();
+		return searchText.length === 0 || text.indexOf(searchText.toLowerCase()) > -1;
+	});
 
-		// Sort todo with non-completed first
-		filteredTodos.sort((a, b) => {
-			if (!a.completed && b.completed) {
-				return -1;
-			} else if (a.completed && !b.completed) {
-				return 1;
-			} else {
-				return 0;
-			}
-		});
+	// Sort todo with non-completed first
+	filteredTodos.sort((a, b) => {
+		if (!a.completed && b.completed) {
+			return -1;
+		} else if (a.completed && !b.completed) {
+			return 1;
+		} else {
+			return 0;
+		}
+	});
 
-		return filteredTodos;
-	}
+	return filteredTodos;
 };
